@@ -11,37 +11,50 @@ Ext.define('main.viewport',
 	    config.items =  
 	    [
 		    {
-		        region: 'north',
-		        html: '<h1 class="x-panel-header">Collection Tracker (Open Source project by Sam Bassett - Lothrazar)</h1>',
-		        autoHeight: true,
-		        border: false,
-		        margins: '0 0 5 0'
+		        region: 'north', 
+		        title:'title',
+		        height:75 ,
+		        loader: 
+                {
+                    autoLoad:true,
+                    url :'views/viewport/north.html'
+                }
 		    }, {
 		        region: 'west',
 		        collapsible: true,
 		        title: 'Navigation',
-		        width: 200
+		        width: 200,
+                loader: 
+                {
+                    autoLoad:true,
+                    url :'views/viewport/west.html'
+                }
+		        
 		        // the west region might typically utilize a TreePanel or a Panel with Accordion layout
 		    }, {
 		        region: 'south',
 		        title: '',
-		        collapsible: true,
-		        html: "<div id='south'></div>",
+		        collapsible: true, 
 		        split: true,
 		        height: 100,
-		        minHeight: 100
+		        minHeight: 100,
+		        loader: 
+                {
+                    autoLoad:true,
+                    url :'views/viewport/south.html'
+                }
 		    }, {
 		        region: 'east',
 		        title: 'Title for the Grid Panel',
 		        collapsible: true,
 		        split: true,
-		        width: 200,
-		        //xtype: 'grid',
-		        
-		        html: 'Content goes here',
-		        // remaining grid configuration not shown ...
-		        // notice that the GridPanel is added directly as the region
-		        // it is not "overnested" inside another Panel
+		        width: 200, 
+		        loader: 
+		        {
+                    autoLoad:true,
+                    url :'views/viewport/east.html'
+                }
+	 
 		    }, {
 		        region: 'center',
 		        xtype: 'tabpanel', // TabPanel itself has no title
@@ -61,12 +74,6 @@ Ext.define('main.viewport',
      ,beforeRender:function() { this.callParent();}
 	 ,afterRender:function()
 	 {   
-	    //load the relevant HTML views into their containers
-	     $.get( "views/viewport_south.html", function( data ) 
-	     { 
-            $( "#south" ).html( data ); 
-         });
-	     
 	     
 	     this.callParent(); 
 	 }
