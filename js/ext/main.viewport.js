@@ -24,9 +24,9 @@ Ext.define('main.viewport',
 		        // the west region might typically utilize a TreePanel or a Panel with Accordion layout
 		    }, {
 		        region: 'south',
-		        title: 'Title for Panel',
+		        title: '',
 		        collapsible: true,
-		        html: 'Information goes here',
+		        html: "<div id='south'></div>",
 		        split: true,
 		        height: 100,
 		        minHeight: 100
@@ -59,7 +59,18 @@ Ext.define('main.viewport',
 	 //override certain functions, then call the parent method
 	 ,initComponent: function() {  this.callParent(arguments); }
      ,beforeRender:function() { this.callParent();}
-	 ,afterRender:function(){   this.callParent(); }
+	 ,afterRender:function()
+	 {   
+	    //load the relevant HTML views into their containers
+	     $.get( "views/viewport_south.html", function( data ) 
+	     { 
+            $( "#south" ).html( data ); 
+         });
+	     
+	     
+	     this.callParent(); 
+	 }
+ 
  
  
  
