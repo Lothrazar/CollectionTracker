@@ -2,7 +2,10 @@ App =
 {
     init:function()
     {
-        alert('App.init');
+        if(typeof Ext == 'undefined') 
+            alert('Ext.js undefined.  Site will not load correctly');
+           else
+        console.log(Ext);
     }
     
     
@@ -12,4 +15,7 @@ App =
 
 
 //jquery on ready event
-App.init();
+$(document).ready(function()
+{
+    App.init();
+});
