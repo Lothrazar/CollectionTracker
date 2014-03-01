@@ -1,12 +1,12 @@
 Ext.define('main.viewport',
 {
 	extend:'Ext.container.Viewport' 
-	//alias:'myalias'
-	, initComponent: function() {  this.callParent(arguments); }
+ 
+	
+	
 	,constructor:function(config)
-	{
-            console.log('main.viewport CONSTRUCTOR');
-		config. layout = 'border'; //default was fit
+	{ 
+		config. layout = 'border';  
 		
 	    config.items =  
 	    [
@@ -45,15 +45,23 @@ Ext.define('main.viewport',
 		    }, {
 		        region: 'center',
 		        xtype: 'tabpanel', // TabPanel itself has no title
-		        items: {
+		        items: 
+		        {
 		            title: 'Main',
 		            html: 'The first tab\'s content. Others may be added dynamically'
 		        }
 		    }
 	    ];
-	     this.callParent(arguments);//always have this for every constructor extension
+	     
+	     this.callParent(arguments);//base class
 	 }//end of constructor
-});
-
-
-            console.log('main.viewport defined');
+	 
+	 //override certain functions, then call the parent method
+	 ,initComponent: function() {  this.callParent(arguments); }
+     ,beforeRender:function() { this.callParent();}
+	 ,afterRender:function(){   this.callParent(); }
+ 
+ 
+ 
+});//end of Ext.define
+ 

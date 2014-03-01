@@ -1,5 +1,7 @@
-/*.hdr
+
+
+.hidden
 {
-	background-color:purple;
+	height:0px!important;
+	display:none;
 }
-*/
