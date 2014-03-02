@@ -1,9 +1,7 @@
 Ext.define('main.viewport',
 {
 	extend:'Ext.container.Viewport' 
- 
-	
-	
+  
 	,constructor:function(config)
 	{ 
 		config. layout = 'border';  
@@ -16,37 +14,17 @@ Ext.define('main.viewport',
 		        height:  55,
 		        items:
 		        [{
-		            xtype:'toolbar',  //Ext.create("Ext.toolbar.Toolbar", {
-     
+		            xtype:'toolbar',  //Ext.create("Ext.toolbar.Toolbar", { 
                     items: 
                     [
                         {
-                            // xtype: 'button', // default for Toolbars
-                            text: 'Button',
-                            handler : function() 
-                            {
-                                Ext.Ajax.request(
-                                {
-                                   url: 'rest/region',
-                                   success: function(response, opts) 
-                                   {
-                                      var obj = Ext.decode(response.responseText);
-                                      
-                                      console.log('GET REQUEST RESULT:');
-                                      
-                                      console.dir(obj);
-                                      
-                                      
-                                      
-                                   } 
-                                });
-                            }
+                            xtype: 'sbutton',  
+                            text: 'Button', 
+                            handler : App.toolbar.region
                         }
-        
+                        ,'-'
                         ,'->'   
-                       
-                     //   '-', // same as {xtype: 'tbseparator'} to create Ext.toolbar.Separator
-              
+                
                     ]  
                 }]
 		       /* loader: 

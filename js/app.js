@@ -17,26 +17,54 @@ App =
                     //hide loading bar gif
                     $("#main_loading").addClass('hidden');
                     
-                    Ext.create('main.viewport', {}); 
-                    
-                 
+                    Ext.create('main.viewport', {});  
                 }
             }); //end Application
         
         
             //set Ajax defaults
+        
+            //Ext.Ajax.extraParams = {TOKEN:"TOKEN"}; 
             
-           /* Ext.Ajax.defaultHeaders = {
-                'Powered-By': 'Ext Core'
-            }; 
-             Ext.Ajax.extraParams = {TOKEN:"TOKEN"};*/
-            Ext.Ajax.on('requestexception', function(o){console.log(o);alert("404 ");});
-           
-        
-        
+            Ext.Ajax.on('requestexception', function(o,e)
+            {
+                
+                if(e.status && e.responseText) // these may not exist
+                {
+                    alert(e.status + ":" + e.responseText);
+                }
+                else //assume that database connection failed
+                {
+                    alert("500 : Could not connect to database 'tracker'"); 
+                } 
+            });
+            
+            
         }
     } // end App.init
     
+    
+    //click events
+    ,toolbar:
+    {
+        region:function()
+        {
+            Ext.Ajax.request(
+            {
+               url: 'rest/region',
+               success: function(response, opts) 
+               {
+                  var obj = Ext.decode(response.responseText);
+                  
+                  console.log('GET REQUEST RESULT:');
+                  
+                  console.dir(obj);
+                   
+               } 
+            }); 
+        } 
+        
+    }
     
 };
 
