@@ -19,6 +19,9 @@ App =
                     
                     //hide loading bar after viewport is created
                     $("#main_loading").addClass('hidden');
+                    
+ 
+                    
                 }
             }); //end Application
         

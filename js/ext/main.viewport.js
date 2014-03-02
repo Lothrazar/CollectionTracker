@@ -47,7 +47,7 @@ Ext.define('main.viewport',
 		    }, 
             {
                 region: 'south',
-                title: 'about',
+                title: 'About',
                 collapsible: true, 
                 split: true,
                 height: 100,
