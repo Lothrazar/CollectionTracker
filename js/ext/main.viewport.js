@@ -13,16 +13,50 @@ Ext.define('main.viewport',
 		    {
 		        region: 'north', 
 		        title:'Collection Tracker',
-		        height:  60,
-		        loader: 
+		        height:  55,
+		        items:
+		        [{
+		            xtype:'toolbar',  //Ext.create("Ext.toolbar.Toolbar", {
+     
+                    items: 
+                    [
+                        {
+                            // xtype: 'button', // default for Toolbars
+                            text: 'Button',
+                            handler : function() 
+                            {
+                                Ext.Ajax.request(
+                                {
+                                   url: 'rest/sample.json',
+                                   success: function(response, opts) 
+                                   {
+                                      var obj = Ext.decode(response.responseText);
+                                      console.dir(obj);
+                                   }/*,
+                                   failure: function(response, opts) {
+                                      console.log('server-side failure with status code ' + response.status);
+                                   }*/
+                                });
+                            }
+                        }
+        
+                        ,'->'   
+                       
+                     //   '-', // same as {xtype: 'tbseparator'} to create Ext.toolbar.Separator
+              
+                    ]  
+                }]
+		       /* loader: 
                 {
                     autoLoad:true,
                     url :'views/viewport/north.html'
-                }
-		    },  /* 
+                }*/
+		    },  
+		     
 		    {
 		        region: 'west',
 		        collapsible: true,
+		        collapsed:true,
 		        title: 'Navigation',
 		        width: 200,
                 loader: 
@@ -32,7 +66,7 @@ Ext.define('main.viewport',
                 }
 		        
 		        // the west region might typically utilize a TreePanel or a Panel with Accordion layout
-		    }, */
+		    }, 
 		    {
 		        region: 'east',
 		        title: 'Forms',
@@ -90,12 +124,7 @@ Ext.define('main.viewport',
 	 //override certain functions, then call the parent method
 	 ,initComponent: function() {  this.callParent(arguments); }
      ,beforeRender:function() { this.callParent();}
-	 ,afterRender:function()
-	 {   
-	     
-	     this.callParent(); 
-	 }
- 
+	 ,afterRender:function(){  this.callParent(); }
  
  
  

@@ -13,17 +13,25 @@ App =
             {
                 name: 'Lothrazar\'s Collection Tracker',
                 launch: function() 
-                { 
+                {
+                    //hide loading bar gif
+                    $("#main_loading").addClass('hidden');
                     
                     Ext.create('main.viewport', {}); 
                     
-                    //hide loading bar after viewport is created
-                    $("#main_loading").addClass('hidden');
-                    
- 
-                    
+                 
                 }
             }); //end Application
+        
+        
+            //set Ajax defaults
+            
+           /* Ext.Ajax.defaultHeaders = {
+                'Powered-By': 'Ext Core'
+            }; 
+             Ext.Ajax.extraParams = {TOKEN:"TOKEN"};*/
+            Ext.Ajax.on('requestexception', function(o){console.log(o);alert("404 ");});
+           
         
         
         }
