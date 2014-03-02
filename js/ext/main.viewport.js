@@ -27,15 +27,18 @@ Ext.define('main.viewport',
                             {
                                 Ext.Ajax.request(
                                 {
-                                   url: 'rest/sample.json',
+                                   url: 'rest/region',
                                    success: function(response, opts) 
                                    {
                                       var obj = Ext.decode(response.responseText);
+                                      
+                                      console.log('GET REQUEST RESULT:');
+                                      
                                       console.dir(obj);
-                                   }/*,
-                                   failure: function(response, opts) {
-                                      console.log('server-side failure with status code ' + response.status);
-                                   }*/
+                                      
+                                      
+                                      
+                                   } 
                                 });
                             }
                         }
