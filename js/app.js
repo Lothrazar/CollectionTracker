@@ -17,7 +17,7 @@ App =
                     //hide loading bar gif
                     $("#main_loading").addClass('hidden');
                     
-                    Ext.create('main.viewport', {});  
+                    Ext.create('Sam.main.viewport', {});  
                 }
             }); //end Application
         
@@ -49,6 +49,21 @@ App =
     {
         region:function()
         {
+            var tabs = Ext.getCmp('main_tabpanel');
+            
+            //tabs.add
+            tabs.add(Ext.create( 'Ext.panel.Panel', //'Ext.tab.Tab',
+            {
+                 title: 'test', 
+                 closable:true, 
+                loader: 
+                {
+                    autoLoad:true,
+                    url :'views/tabs/games.html'
+                }
+              //, bodyStyle: 'background: none' 
+            }));
+            
             Ext.Ajax.request(
             {
                url: 'rest/region',
@@ -63,7 +78,8 @@ App =
                } 
             }); 
         } 
-        
+        ,collection:function(){}
+        ,games:function(){}
     }
     
 };

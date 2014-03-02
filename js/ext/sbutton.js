@@ -3,9 +3,7 @@ Ext.define('Sam.button',
     extend:'Ext.button.Button' 
     ,xtype:'sbutton'
     ,constructor:function(config)
-    { 
-        console.log('sbutton being created');
-        console.log(config);
+    {  
         config.border = 1;
         config.cls = 'x-btn-default-small';
         
@@ -23,5 +21,4 @@ Ext.define('Sam.button',
      ,afterRender:function(){  this.callParent(); }
   
 });//end of Ext.define
- 
- console.log('sbutton defined');
+  

@@ -1,4 +1,4 @@
-Ext.define('main.viewport',
+Ext.define('Sam.main.viewport',
 {
 	extend:'Ext.container.Viewport' 
   
@@ -11,18 +11,49 @@ Ext.define('main.viewport',
 		    {
 		        region: 'north', 
 		        title:'Collection Tracker',
-		        height:  55,
+		        height:  100,
 		        items:
 		        [{
 		            xtype:'toolbar',  //Ext.create("Ext.toolbar.Toolbar", { 
                     items: 
                     [
-                        {
+                         {
                             xtype: 'sbutton',  
-                            text: 'Button', 
-                            handler : App.toolbar.region
+                            text: 'Collection', 
+                            height:40,
+                            handler : App.toolbar.collection
                         }
-                        ,'-'
+                        ,{
+                            xtype: 'buttongroup',
+                            title: 'Data',
+                            columns: 2,
+                            defaults: { scale: 'small'     },
+                            items:
+                            [
+                                {
+                                    xtype: 'sbutton',  
+                                    text: 'Games', 
+                                    handler : App.toolbar.games
+                                }
+                            ]
+                        
+                        }//end group
+                        ,{
+                            xtype: 'buttongroup',
+                            title: 'Lookups',
+                            columns: 2,
+                            defaults: { scale: 'small'     },
+                            items:
+                            [
+                                {
+                                    xtype: 'sbutton',  
+                                    text: 'Regions', 
+                                    handler : App.toolbar.region
+                                }
+                            ]
+                        
+                        }//end group
+                        
                         ,'->'   
                 
                     ]  
@@ -76,10 +107,11 @@ Ext.define('main.viewport',
             }, 
 		    {
 		        region: 'center',
+		        id:"main_tabpanel",
 		        xtype: 'tabpanel', // TabPanel itself has no title
 		        items: 
 		        [
-    		        {
+    		      /*  {
     		            title: 'Collection', 
     		            loader: 
                         {
@@ -94,7 +126,7 @@ Ext.define('main.viewport',
                             autoLoad:true,
                             url :'views/tabs/types.html'
                         }
-                    }
+                    }*/
 		        ]
 		    }
 	    ];
