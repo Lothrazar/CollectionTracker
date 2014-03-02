@@ -12,14 +12,15 @@ Ext.define('main.viewport',
 	    [
 		    {
 		        region: 'north', 
-		        title:'title',
-		        height:75 ,
+		        title:'Collection Tracker',
+		        height:  60,
 		        loader: 
                 {
                     autoLoad:true,
                     url :'views/viewport/north.html'
                 }
-		    }, {
+		    },  /* 
+		    {
 		        region: 'west',
 		        collapsible: true,
 		        title: 'Navigation',
@@ -31,38 +32,55 @@ Ext.define('main.viewport',
                 }
 		        
 		        // the west region might typically utilize a TreePanel or a Panel with Accordion layout
-		    }, {
-		        region: 'south',
-		        title: '',
-		        collapsible: true, 
-		        split: true,
-		        height: 100,
-		        minHeight: 100,
-		        loader: 
-                {
-                    autoLoad:true,
-                    url :'views/viewport/south.html'
-                }
-		    }, {
+		    }, */
+		    {
 		        region: 'east',
-		        title: 'Title for the Grid Panel',
-		        collapsible: true,
+		        title: 'Forms',
+		        collapsible: false,
 		        split: true,
 		        width: 200, 
 		        loader: 
 		        {
                     autoLoad:true,
                     url :'views/viewport/east.html'
+                } 
+		    }, 
+            {
+                region: 'south',
+                title: 'about',
+                collapsible: true, 
+                split: true,
+                height: 100,
+                minHeight: 100,
+                collapsed:true,
+                loader: 
+                {
+                    autoLoad:true,
+                    url :'views/viewport/south.html'
                 }
-	 
-		    }, {
+            }, 
+		    {
 		        region: 'center',
 		        xtype: 'tabpanel', // TabPanel itself has no title
 		        items: 
-		        {
-		            title: 'Main',
-		            html: 'The first tab\'s content. Others may be added dynamically'
-		        }
+		        [
+    		        {
+    		            title: 'Collection', 
+    		            loader: 
+                        {
+                            autoLoad:true,
+                            url :'views/tabs/games.html'
+                        }
+    		        }
+    		        , {
+                        title: 'Types and Categories',
+                        loader: 
+                        {
+                            autoLoad:true,
+                            url :'views/tabs/types.html'
+                        }
+                    }
+		        ]
 		    }
 	    ];
 	     
