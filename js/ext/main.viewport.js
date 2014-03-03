@@ -111,15 +111,15 @@ Ext.define('Sam.main.viewport',
 		        xtype: 'tabpanel', // TabPanel itself has no title
 		        items: 
 		        [
-    		      /*  {
-    		            title: 'Collection', 
+    		      {
+    		            title: 'Welcome', 
     		            loader: 
                         {
                             autoLoad:true,
-                            url :'views/tabs/games.html'
+                            url :'views/tabs/welcome.html'
                         }
     		        }
-    		        , {
+    		        /*  , {
                         title: 'Types and Categories',
                         loader: 
                         {
