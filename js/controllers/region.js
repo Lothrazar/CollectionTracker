@@ -10,16 +10,15 @@ App.region =
         Ext.create('Ext.grid.Panel', 
         {
             title: 'Regions',
-            store:  // Ext.data.StoreManager.lookup('simpsonsStore'),
+            store:  
                 Ext.create('Sam.Store', 
                 {
                      model: 'Region'
-                     ,url: '/rest/region'
-                     ,fields:['region_id', 'region_name'] 
+                     ,url: '/rest/region' 
                  }),
             columns: [
                 { text: 'id',  dataIndex: 'region_id' },
-                { text: 'n', dataIndex: 'region_name', flex: 1 } 
+                { text: 'Name', dataIndex: 'region_name', flex: 1 } 
             ],
             height: 200,
             width: 400,

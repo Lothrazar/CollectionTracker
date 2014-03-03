@@ -1,4 +1,4 @@
-Ext.define('Sam.main.viewport',
+Ext.define('Main.viewport',
 {
 	extend:'Ext.container.Viewport' 
   
@@ -12,52 +12,7 @@ Ext.define('Sam.main.viewport',
 		        region: 'north', 
 		        title:'Collection Tracker',
 		        height:  100,
-		        items:
-		        [{
-		            xtype:'toolbar',  //Ext.create("Ext.toolbar.Toolbar", { 
-                    items: 
-                    [
-                         {
-                            xtype: 'sbutton',  
-                            text: 'Collection', 
-                            height:40,
-                            handler : App.toolbar.collection
-                        }
-                        ,{
-                            xtype: 'buttongroup',
-                            title: 'Data',
-                            columns: 2,
-                            defaults: { scale: 'small'     },
-                            items:
-                            [
-                                {
-                                    xtype: 'sbutton',  
-                                    text: 'Games', 
-                                    handler : App.toolbar.game
-                                }
-                            ]
-                        
-                        }//end group
-                        ,{
-                            xtype: 'buttongroup',
-                            title: 'Lookups',
-                            columns: 2,
-                            defaults: { scale: 'small'     },
-                            items:
-                            [
-                                {
-                                    xtype: 'sbutton',  
-                                    text: 'Regions', 
-                                    handler : App.toolbar.region
-                                }
-                            ]
-                        
-                        }//end group
-                        
-                        ,'->'   
-                
-                    ]  
-                }] 
+		        items:     [Ext.create("Main.toolbar",{})] 
 		    },   
 		    {
 		        region: 'west',

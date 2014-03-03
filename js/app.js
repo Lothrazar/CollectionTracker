@@ -37,7 +37,7 @@ App =
                launch: function() 
                {
                     
-                    Ext.create('Sam.main.viewport', {});  
+                    Ext.create('Main.viewport', {});  
                      
                     //hide loading bar gif
                     $("#main_loading").addClass('hidden');
@@ -67,6 +67,12 @@ App =
             
             App.tabs.set(tab_name);
         }
+        ,platform:function()
+        {
+            var tab_name = 'platform';
+            
+            App.tabs.set(tab_name);
+        }
     }
      
     ,tabs:
@@ -84,9 +90,15 @@ App =
         }
         ,add:function(tab_name)
         {  
+            //TODO: move to helpers
+            function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
             Ext.getCmp('main_tabpanel').add(Ext.create( 'Ext.panel.Panel', //'Ext.tab.Tab',
             {
-                title: tab_name
+                title: capitaliseFirstLetter(tab_name)
                 ,id:App.tabs._prefix + tab_name
                 ,itemId:tab_name
                 ,closable:true
@@ -108,16 +120,7 @@ App =
                             
                         });
                        
-                       /* Ext.Ajax.request(
-                        {
-                           url: 'rest/region',
-                           success: function(response, opts) 
-                           {
-                              var obj = Ext.decode(response.responseText);
-                               
-                              console.log(obj); 
-                           } 
-                        });   */          
+                              
                     }
                 } 
             }));
