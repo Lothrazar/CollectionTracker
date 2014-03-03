@@ -9,77 +9,138 @@ App =
         }
         else
         { 
-            Ext.application(
-            {
-                name: 'Lothrazar\'s Collection Tracker',
-                launch: function() 
-                {
-                    //hide loading bar gif
-                    $("#main_loading").addClass('hidden');
+           App.setDefaults();
+           
+           Ext.application(
+           {
+               name: 'LCT',
+                 launch: function() 
+               {
                     
                     Ext.create('Sam.main.viewport', {});  
-                }
-            }); //end Application
+                    
+                    
+                    //hide loading bar gif
+                    $("#main_loading").addClass('hidden');
+                 }
+            });  
         
         
-            //set Ajax defaults
-        
-            //Ext.Ajax.extraParams = {TOKEN:"TOKEN"}; 
-            
-            Ext.Ajax.on('requestexception', function(o,e)
-            {
-                
-                if(e.status && e.responseText) // these may not exist
-                {
-                    alert(e.status + ":" + e.responseText);
-                }
-                else //assume that database connection failed
-                {
-                    alert("500 : Could not connect to database 'tracker'"); 
-                } 
-            });
-            
-            
+          
         }
     } // end App.init
     
+    ,setDefaults:function()
+    {
+        //Ext.Ajax.extraParams = {TOKEN:"TOKEN"}; 
+            
+        Ext.Ajax.on('requestexception', function(o,e)
+        {
+            
+            if(e.status && e.responseText) // these may not exist
+            {
+                alert(e.responseText);
+            }
+            else //assume that database connection failed
+            {
+                alert("500 : Could not connect to database 'tracker'"); 
+            } 
+        });
+        
+    }
     
     //click events
     ,toolbar:
     {
         region:function()
         {
-            var tabs = Ext.getCmp('main_tabpanel');
+     
+           
+           var tab_name = 'region';
+           
+         
+            App.tabs.set(tab_name);
+        } 
+        ,collection:function()
+        {
+            var tab_name = 'collection';
+           
+         
+            App.tabs.set(tab_name);
+        }
+        ,games:function()
+        {
+            var tab_name = 'games';
+           
+         
+            App.tabs.set(tab_name);
+        }
+    }
+    
+    
+    ,tabs:
+    {
+        _prefix : 'maintab_',
+        //either make tab if not visible, or set as active tab
+        set:function(tab_name)
+        {
+            //if(Ext.getCmp(App.tabs._prefix + tab_name))//itworks,but..
+            if(Ext.getCmp('main_tabpanel').child("#"+tab_name))
+           {
+               App.tabs.select(tab_name);
+           }
+           else App.tabs.add(tab_name);
+        }
+        ,add:function(tab_name)
+        {
+            console.log(tab_name);
             
-            //tabs.add
+             var tabs = Ext.getCmp('main_tabpanel');
             tabs.add(Ext.create( 'Ext.panel.Panel', //'Ext.tab.Tab',
             {
-                 title: 'test', 
-                 closable:true, 
-                loader: 
+                 title: tab_name
+                 ,id:App.tabs._prefix + tab_name
+                 ,itemId:tab_name
+                 ,closable:true
+                ,loader: 
                 {
                     autoLoad:true,
-                    url :'views/tabs/games.html'
+                    url :'views/tabs/'+tab_name+'.html'
                 }
-              //, bodyStyle: 'background: none' 
+                ,listeners:
+                {
+                    afterrender:function()
+                    { 
+                        //test getting ajax content
+                        Ext.Ajax.request(
+                        {
+                           url: 'rest/region',
+                           success: function(response, opts) 
+                           {
+                              var obj = Ext.decode(response.responseText);
+                              
+                              console.log('GET REQUEST RESULT:');
+                              
+                              console.dir(obj);
+                               
+                           } 
+                        }); 
+                        
+                                        
+                    }
+                } 
             }));
-            
-            Ext.Ajax.request(
-            {
-               url: 'rest/region',
-               success: function(response, opts) 
-               {
-                  var obj = Ext.decode(response.responseText);
-                  
-                  console.log('GET REQUEST RESULT:');
-                  
-                  console.dir(obj);
-                   
-               } 
-            }); 
-        } 
-        ,collection:function(){}
-        ,games:function(){}
+           // now that it has been aded, select it as well
+            App.tabs.select(tab_name);
+        }
+        
+        ,select:function(tab_name)
+        {
+            var tabs = Ext.getCmp('main_tabpanel');
+         
+             tabs.setActiveTab(tabs.child("#"+tab_name));
+         //tabs.setActiveTab(users);   
+        }
     }
     
 };
