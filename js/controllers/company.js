@@ -3,7 +3,7 @@ App.company =
     init:function()
     {
         
-        alert('company controller');
+        console.log('company controller');
     }  
     
     
