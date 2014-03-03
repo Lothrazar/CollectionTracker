@@ -14,16 +14,31 @@
         
          
         <script src="js/libs/jquery-2.1.0.min.js"></script>
-        <script type="text/javascript" charset="utf-8" src="http://cdn.sencha.com/ext/gpl/4.2.1/ext-all.js"></script> 
-        <script src="js/ext/sbutton.js"></script>
-        <script src="js/ext/main.viewport.js"></script>
-        <script src="js/app.js"></script>
         
+        <script src="js/libs/lazyload.js"></script> 
         <script type="text/javascript"> 
+        //https://github.com/rgrove/lazyload/
         	//offical docs say v4.2.2 is out, but the CDN only has up to 4.2.1
 			$(document).ready(function()
 			{ 
-			    App.init(); // Warp 9 engage
+				LazyLoad.js(
+		        [ "http://cdn.sencha.com/ext/gpl/4.2.1/ext-all.js" 
+		    
+		        ], function() 
+		        {
+		             //nested
+		            LazyLoad.js(
+		            ["js/ext/sbutton.js"
+		            ,"js/ext/main.viewport.js"
+		            ,"js/app.js" //above here only put things required for app to run
+		            ,'js/ext/models/company.js'
+               		,'js/ext/models/game.js'
+		            ], function() 
+		            { 
+		               App.init();
+		            });
+		    
+		        });
 			}); 
         </script>
     </body>

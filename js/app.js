@@ -1,6 +1,11 @@
 App = 
 {
-    init:function()
+    preinit:function()
+    {
+        
+        
+    }
+    ,init:function()
     { 
         if(typeof Ext == 'undefined') 
         {
@@ -25,6 +30,7 @@ App =
                  }
             });  
         
+    
         
           
         }
