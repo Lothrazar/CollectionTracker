@@ -4,7 +4,7 @@ Ext.define('Sam.main.viewport',
   
 	,constructor:function(config)
 	{ 
-		config. layout = 'border';  
+		config.layout = 'border';  
 		
 	    config.items =  
 	    [
@@ -33,7 +33,7 @@ Ext.define('Sam.main.viewport',
                                 {
                                     xtype: 'sbutton',  
                                     text: 'Games', 
-                                    handler : App.toolbar.games
+                                    handler : App.toolbar.game
                                 }
                             ]
                         
@@ -57,14 +57,8 @@ Ext.define('Sam.main.viewport',
                         ,'->'   
                 
                     ]  
-                }]
-		       /* loader: 
-                {
-                    autoLoad:true,
-                    url :'views/viewport/north.html'
-                }*/
-		    },  
-		     
+                }] 
+		    },   
 		    {
 		        region: 'west',
 		        collapsible: true,
@@ -111,22 +105,14 @@ Ext.define('Sam.main.viewport',
 		        xtype: 'tabpanel', // TabPanel itself has no title
 		        items: 
 		        [
-    		      {
+		            {
     		            title: 'Welcome', 
     		            loader: 
                         {
                             autoLoad:true,
                             url :'views/tabs/welcome.html'
                         }
-    		        }
-    		        /*  , {
-                        title: 'Types and Categories',
-                        loader: 
-                        {
-                            autoLoad:true,
-                            url :'views/tabs/types.html'
-                        }
-                    }*/
+    		        } 
 		        ]
 		    }
 	    ];
@@ -138,8 +124,6 @@ Ext.define('Sam.main.viewport',
 	 ,initComponent: function() {  this.callParent(arguments); }
      ,beforeRender:function() { this.callParent();}
 	 ,afterRender:function(){  this.callParent(); }
- 
- 
- 
+  
 });//end of Ext.define
  

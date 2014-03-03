@@ -5,7 +5,7 @@ Ext.define('Platform',
      [
           {name: 'platform_id', type: 'int'}
          ,{name: 'platform_name',  type: 'string'}
-         ,{name: 'company_id',       type: 'int'} 
-         ,{name: 'company_name',  type: 'string'}
+         ,{name: 'platform_company_id',       type: 'int'} 
+         ,{name: 'platform_company_name',  type: 'string'}
      ]
  });

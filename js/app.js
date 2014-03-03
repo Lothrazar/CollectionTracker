@@ -1,42 +1,6 @@
 App = 
 {
-    preinit:function()
-    {
-        
-        
-    }
-    ,init:function()
-    { 
-        if(typeof Ext == 'undefined') 
-        {
-            //if this happens, the main_loading bar will still be visible
-            alert('Ext.js undefined.  Could not find CDN hosted at http://cdn.sencha.com/ext/gpl/4.2.1/  Site will not load correctly');
-        }
-        else
-        { 
-           App.setDefaults();
-           
-           Ext.application(
-           {
-               name: 'LCT',
-                 launch: function() 
-               {
-                    
-                    Ext.create('Sam.main.viewport', {});  
-                    
-                    
-                    //hide loading bar gif
-                    $("#main_loading").addClass('hidden');
-                 }
-            });  
-        
-    
-        
-          
-        }
-    } // end App.init
-    
-    ,setDefaults:function()
+    setDefaults:function()
     {
         //Ext.Ajax.extraParams = {TOKEN:"TOKEN"}; 
             
@@ -55,13 +19,37 @@ App =
         
     }
     
-    //click events
+    ,init:function()
+    { 
+        if(typeof Ext == 'undefined') 
+        {
+            //if this happens, the main_loading bar will still be visible
+            alert('Ext.js undefined.  Could not find CDN hosted at http://cdn.sencha.com/ext/gpl/4.2.1/  Site will not load correctly');
+        }
+        else
+        { 
+           App.setDefaults();
+           
+           //do we even need the application wrapper? 
+           Ext.application(
+           {
+               name: 'LCT',
+               launch: function() 
+               {
+                    
+                    Ext.create('Sam.main.viewport', {});  
+                     
+                    //hide loading bar gif
+                    $("#main_loading").addClass('hidden');
+                 }
+            });   
+        }
+    } // end App.init
+      
     ,toolbar:
     {
         region:function()
-        {
-     
-           
+        { 
            var tab_name = 'region';
            
          
@@ -70,20 +58,17 @@ App =
         ,collection:function()
         {
             var tab_name = 'collection';
-           
-         
+            
             App.tabs.set(tab_name);
         }
-        ,games:function()
+        ,game:function()
         {
-            var tab_name = 'games';
-           
-         
+            var tab_name = 'game';
+            
             App.tabs.set(tab_name);
         }
     }
-    
-    
+     
     ,tabs:
     {
         _prefix : 'maintab_',
@@ -98,16 +83,13 @@ App =
            else App.tabs.add(tab_name);
         }
         ,add:function(tab_name)
-        {
-            console.log(tab_name);
-            
-             var tabs = Ext.getCmp('main_tabpanel');
-            tabs.add(Ext.create( 'Ext.panel.Panel', //'Ext.tab.Tab',
+        {  
+            Ext.getCmp('main_tabpanel').add(Ext.create( 'Ext.panel.Panel', //'Ext.tab.Tab',
             {
-                 title: tab_name
-                 ,id:App.tabs._prefix + tab_name
-                 ,itemId:tab_name
-                 ,closable:true
+                title: tab_name
+                ,id:App.tabs._prefix + tab_name
+                ,itemId:tab_name
+                ,closable:true
                 ,loader: 
                 {
                     autoLoad:true,
@@ -118,21 +100,24 @@ App =
                     afterrender:function()
                     { 
                         //test getting ajax content
-                        Ext.Ajax.request(
+                        
+                        LazyLoad.js( [ "js/controllers/"+tab_name+".js"    ] //offical docs say v4.2.2 is out, but the CDN only has up to 4.2.1
+                        , function() 
+                        {
+                            eval ("App."+tab_name+".init();");
+                            
+                        });
+                       
+                       /* Ext.Ajax.request(
                         {
                            url: 'rest/region',
                            success: function(response, opts) 
                            {
                               var obj = Ext.decode(response.responseText);
-                              
-                              console.log('GET REQUEST RESULT:');
-                              
-                              console.dir(obj);
                                
+                              console.log(obj); 
                            } 
-                        }); 
-                        
-                                        
+                        });   */          
                     }
                 } 
             }));
@@ -141,18 +126,13 @@ App =
         }
         
         ,select:function(tab_name)
-        {
-            var tabs = Ext.getCmp('main_tabpanel');
-         
-             tabs.setActiveTab(tabs.child("#"+tab_name));
-         //tabs.setActiveTab(users);   
+        { 
+            var tabpanel = Ext.getCmp('main_tabpanel');
+            
+            tabpanel.setActiveTab(tabpanel.child("#"+tab_name)); 
         }
-    }
-    
+    } 
 };
 
-
-
-
-
+ 
 
