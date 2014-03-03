@@ -10,22 +10,13 @@ App.region =
         Ext.create('Ext.grid.Panel', 
         {
             title: 'Regions',
-            store:// Ext.data.StoreManager.lookup('simpsonsStore'),
-                Ext.create('Ext.data.Store', {
-                 model: 'Region',
-                 proxy: {
-                     type: 'ajax',
-                     url: '/rest/region',
-                     reader: {
-                         //type: 'json'
-                        // ,
-                         root: 'rows'
-                         
-                     }
-                 },
-                  fields:['region_id', 'region_name'],
-                 autoLoad: true
-             }),
+            store:  // Ext.data.StoreManager.lookup('simpsonsStore'),
+                Ext.create('Sam.Store', 
+                {
+                     model: 'Region'
+                     ,url: '/rest/region'
+                     ,fields:['region_id', 'region_name'] 
+                 }),
             columns: [
                 { text: 'id',  dataIndex: 'region_id' },
                 { text: 'n', dataIndex: 'region_name', flex: 1 } 
