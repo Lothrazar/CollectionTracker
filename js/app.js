@@ -95,6 +95,10 @@ App =
 {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+//TODO:
+/*String.prototype.capitalizeFirst = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}*/
 
             Ext.getCmp('main_tabpanel').add(Ext.create( 'Ext.panel.Panel', //'Ext.tab.Tab',
             {
