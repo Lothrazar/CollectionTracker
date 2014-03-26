@@ -1,19 +1,17 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>New Web Project</title>
+        <title>Collection Tracker</title>
         
         <link rel="stylesheet" type="text/css" href="http://cdn.sencha.com/ext/gpl/4.2.1/resources/css/ext-all.css">
         <link href="css/main.css" rel="stylesheet" type="text/css">
     </head>
     <body>
          
-         <img id='main_loading' src='img/loading_bar.gif' />
+         <!--this gif will be hidden when the Ext.js app loads -->
+         <img id='main_loading' src='img/loading_bar.gif' /> 
         
-         
-         
          
         <script src="js/libs/jquery-2.1.0.min.js"></script> 
         <script src="js/libs/lazyload.js"></script>  
@@ -28,9 +26,9 @@
 		        {
 		             //the order does not matter within the loader
 		            LazyLoad.js(
-		            ["js/ext/sam.button.js"
-               		,'js/ext/sam.store.js'
-               		,'js/ext/sam.grid.js'
+		            ["js/base/sam.button.js"
+               		,'js/base/sam.store.js'
+               		,'js/base/sam.grid.js'
 		            ,"js/index/main.viewport.js"
 		            ,"js/index/main.toolbar.js"
 		            ,"js/index/app.js"  

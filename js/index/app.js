@@ -122,6 +122,7 @@ App =
 						[
 							 "js/controllers/c_" + tab_name + ".js"
 							,"js/components/model." + tab_name + ".js"
+							,"js/components/grid." + tab_name + ".js"
 						
 						]//offical docs say v4.2.2 is out,  but the CDN only has up to 4.2.1
 						, function()
