@@ -28,15 +28,12 @@
 		        {
 		             //the order does not matter within the loader
 		            LazyLoad.js(
-		            ["js/ext/sbutton.js"
-		            ,"js/ext/main.viewport.js"
-		            ,"js/ext/main.toolbar.js"
-		            ,"js/app.js"  
-		            ,'js/models/company.js'
-               		,'js/models/game.js'
-               		,'js/models/region.js'
-               		,'js/models/platform.js'
-               		,'js/ext/sstore.js'
+		            ["js/ext/sam.button.js"
+               		,'js/ext/sam.store.js'
+               		,'js/ext/sam.grid.js'
+		            ,"js/index/main.viewport.js"
+		            ,"js/index/main.toolbar.js"
+		            ,"js/index/app.js"  
 		            ], function() 
 		            { 
 		               App.init();
