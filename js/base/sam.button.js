@@ -12,9 +12,10 @@ Ext.define('Sam.button',
         config.style.borderColor = '#D1D1D1';
         config.style.borderStyle = 'solid';
         
-        if(config.icon)
+        //shortcut to grab an icon from the 'ico' folder
+        if(config.ico && !config.icon)
         {
-        	config.icon = "img/silk/"+config.icon+'.png';
+        	config.icon = "img/ico/"+config.ico+'.png';
         }
  
         this.callParent(arguments);//base class

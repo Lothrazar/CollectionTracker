@@ -32,7 +32,7 @@ Ext.define('Sam.grid.game',
 			    ,{
 			        xtype: 'sbutton',
 			        text: 'Right Button',
-			        icon:'add'
+			        ico:'add'
 			    }
 		    ]
 		}];
