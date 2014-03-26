@@ -1,3 +1,4 @@
+DROP SCHEMA `tracker` ;
 CREATE SCHEMA `tracker` ;
  
 
