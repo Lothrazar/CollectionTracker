@@ -1,4 +1,4 @@
-Ext.define('Region', 
+Ext.define('Sam.model.region', 
 {
      extend: 'Ext.data.Model',
      fields: 

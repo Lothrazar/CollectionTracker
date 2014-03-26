@@ -1,4 +1,4 @@
-Ext.define('Platform', 
+Ext.define('Sam.model.platform', 
 {
      extend: 'Ext.data.Model',
      fields: 

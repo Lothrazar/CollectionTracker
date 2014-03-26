@@ -1,4 +1,4 @@
-Ext.define('Game', 
+Ext.define('Sam.model.game', 
 {
      extend: 'Ext.data.Model',
      fields: 

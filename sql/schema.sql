@@ -35,7 +35,7 @@ CREATE TABLE `tracker`.`company` (
   
   
     
-  CREATE TABLE `tracker`.`game` (
+CREATE TABLE `tracker`.`game` (
   `game_id` INT NOT NULL DEFAULT 1,
   `game_name` VARCHAR(45) NULL,
   `company_id` INT NOT NULL , 

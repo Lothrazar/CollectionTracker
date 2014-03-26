@@ -6,7 +6,7 @@ Ext.define('Sam.grid.region',
      
 		 config.title = 'Regions';
         
-         config.model= 'Region'
+         config.model= 'Sam.model.region'
          config.url= '/rest/region' 
            
          config.columns= [

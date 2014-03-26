@@ -1,4 +1,4 @@
-Ext.define('Company', 
+Ext.define('Sam.model.company', 
 {
      extend: 'Ext.data.Model',
      fields: 

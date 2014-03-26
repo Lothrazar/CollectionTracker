@@ -11,6 +11,11 @@ Ext.define('Sam.button',
         
         config.style.borderColor = '#D1D1D1';
         config.style.borderStyle = 'solid';
+        
+        if(config.icon)
+        {
+        	config.icon = "img/silk/"+config.icon+'.png';
+        }
  
         this.callParent(arguments);//base class
      }//end of constructor
