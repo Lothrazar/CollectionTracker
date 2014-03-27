@@ -1,2 +1,4 @@
 .project
+/node_modules/.bin/*
 /node_modules/mysql/*
+/node_modules/restify/*
