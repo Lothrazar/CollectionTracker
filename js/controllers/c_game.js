@@ -12,7 +12,7 @@ game =
    		
    		amplify.subscribe("create_game",function()
    		{
-   			alert('create game');
+   			amplify.publish("show_form",{id:'Sam.form.game'});
    		});
     }  
     
