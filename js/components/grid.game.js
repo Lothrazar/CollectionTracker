@@ -6,10 +6,13 @@ Ext.define('Sam.grid.game',
      
 		 config.title = 'Games';
         
-         config.model= 'Sam.model.game'
-         config.url=  '/rest/game' 
-           
-         config.columns= 
+         config.model = 'Sam.model.game'
+         config.url =  '/rest/game' 
+         var btn_handler = function()
+	     { 
+	    	amplify.publish(this.name);
+	     }
+         config.columns = 
          [
              { text: 'id',  dataIndex: 'region_id' }
             ,{ text: 'Region', dataIndex: 'region_name', flex: 1 } 
@@ -19,9 +22,8 @@ Ext.define('Sam.grid.game',
          ];
           
          //config.height= 200;
-         config.width= 400;
-  
-  
+         config.width = 400;
+   
   		config.dockedItems =  
   		[{
 		    xtype: 'toolbar',
@@ -31,8 +33,10 @@ Ext.define('Sam.grid.game',
 			    '->'
 			    ,{
 			        xtype: 'sbutton',
-			        text: 'Right Button',
-			        ico:'add'
+			        text: '',
+			        ico:'add',
+			        name:"create_game",
+			        handler:btn_handler
 			    }
 		    ]
 		}];

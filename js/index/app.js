@@ -1,39 +1,25 @@
 Ext.namespace("Sam"); //this file only gets loaded once. so define namespace and global object
-
-
-
-
-
+ 
 //changing to factory pattern via http://addyosmani.com/resources/essentialjsdesignpatterns/book/#designpatternsjavascript
 Sam.App = function()
-{
-	//DOM does not exist yet
-	
-	//make sure this only gets called once
+{  
+	//private functions are vars
 	var setDefaults = function()
-	{
-		
-		//Ext.Ajax.extraParams = {TOKEN:"TOKEN"};
-		
+	{ 
 		//TODO: put helpers and extensions  and namespace somewher else? maybe in a pre-init?
 		String.prototype.capitalizeFirst = function()
 		{ 
 			return this.charAt(0).toUpperCase() + this.slice(1);
 		} 
-		
-		//??http://www.sencha.com/forum/showthread.php?281682-My-ExtJS-store-AJAX-or-Rest-calls-are-not-working-despite-working-in-Curl-and-jQuery
-		
-		//Ext.Ajax.useDefaultXhrHeader = false;
-		
-		
-		//Ext.Ajax.cors = true;
-//Ext.Ajax.useDefaultXhrHeader = false;
+	 
+		//Ext.Ajax.extraParams = {TOKEN:"TOKEN"};
 
-		Ext.Ajax.defaultHeaders = {              
- 'Accept' : 'application/json',              
- 'Content-Type' : 'application/json'
-};
-
+		Ext.Ajax.defaultHeaders = 
+		{              
+		 'Accept' : 'application/json',              
+		 'Content-Type' : 'application/json'
+		};
+		
 
 		Ext.Ajax.on('requestexception', function(o, e)
 		{
@@ -47,8 +33,7 @@ Sam.App = function()
 			{
 				alert("500 : Could not connect to database 'tracker'");
 			}
-		});
-
+		}); 
 	};
 	
 	//anything outside of the returned object is private
@@ -68,9 +53,7 @@ Sam.App = function()
 				tabs.add(tab_name);
 		},
 		add : function(tab_name)
-		{
-		
-
+		{ 
 			Ext.getCmp('main_tabpanel').add(Ext.create('Ext.panel.Panel', //'Ext.tab.Tab',///TODO: panel as its own extension in /index/ 
 			{
 				title : tab_name.capitalizeFirst(),
@@ -85,20 +68,17 @@ Sam.App = function()
 				listeners :
 				{
 					afterrender : function()
-					{
-						//test getting ajax content
-							console.log('afterrender on  '+tab_name);
-
+					{ 
 						LazyLoad.js(
 						[
+							//should these be in the views?
 							 "js/controllers/c_" + tab_name + ".js"
 							,"js/components/model." + tab_name + ".js"
 							,"js/components/grid." + tab_name + ".js"
 						
 						]//offical docs say v4.2.2 is out,  but the CDN only has up to 4.2.1
 						, function()
-						{
-							console.log('eval on '+tab_name);
+						{ 
 							eval(  tab_name + ".init();"); 
 						}); 
 					}
@@ -115,15 +95,10 @@ Sam.App = function()
 		}
 	};//end of tabs
 
-	
-	
 	 
-	
-	
 	//obj is what we will return
 	var __return = 
-	{
-	 
+	{ 
 		init : function()
 		{
 			if ( typeof Ext == 'undefined')
@@ -139,39 +114,25 @@ Sam.App = function()
 				{
 					name : 'LCT',
 					launch : function()
-					{
-	
+					{ 
 						Ext.create('Main.viewport',{});
 	
 						//hide loading bar gif
 						//TODO: put this inside some sort of Main.viewport.listeners.onRender event
 						$("#main_loading").addClass('hidden');
-						
-						
-						
+						 
 						amplify.subscribe("tab_click",function(o)
 						{ 
 							tabs.set(o.tab_name);
-						});
-						
-						
+						}); 
 					}
 				});
 			}
 		}// end App.init
-		
- 
- 		
 		 
 	};//end of returned object which acts as the constructor
-		
-		
-	
-	return __return;
-	
+		 
+	return __return; 
 }();
 
-
-
-
-
+ 
