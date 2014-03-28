@@ -1,4 +1,4 @@
-App.platform = 
+platform = 
 {
     init:function()
     {

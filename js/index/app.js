@@ -1,6 +1,13 @@
 Ext.namespace("Sam"); //this file only gets loaded once. so define namespace and global object
 
 
+//TODO: put helpers and extensions  and namespace somewher else? maybe in a pre-init?
+String.prototype.capitalizeFirst = function()
+{ 
+	return this.charAt(0).toUpperCase() + this.slice(1);
+} 
+
+
 //changing to factory pattern via http://addyosmani.com/resources/essentialjsdesignpatterns/book/#designpatternsjavascript
 Sam.App = function()
 {
@@ -36,28 +43,19 @@ Sam.App = function()
 			//if(Ext.getCmp(App.tabs._prefix + tab_name))//itworks,but..
 			if (Ext.getCmp('main_tabpanel').child("#" + tab_name))
 			{
-				App.tabs.select(tab_name);
+				tabs.select(tab_name);
 			}
 			else
-				App.tabs.add(tab_name);
+				tabs.add(tab_name);
 		},
 		add : function(tab_name)
 		{
-			//TODO: move to helpers
-			function capitaliseFirstLetter(string)
-			{
-				return string.charAt(0).toUpperCase() + string.slice(1);
-			}
+		
 
-			//TODO:
-			/*String.prototype.capitalizeFirst = function() {
-			 return this.charAt(0).tcoUpperCase() + this.slice(1);
-			 }*/
-
-			Ext.getCmp('main_tabpanel').add(Ext.create('Ext.panel.Panel', //'Ext.tab.Tab',
+			Ext.getCmp('main_tabpanel').add(Ext.create('Ext.panel.Panel', //'Ext.tab.Tab',///TODO: panel as its own extension in /index/ 
 			{
-				title : capitaliseFirstLetter(tab_name),
-				id : App.tabs._prefix + tab_name,
+				title : tab_name.capitalizeFirst(),
+				id : tabs._prefix + tab_name,
 				itemId : tab_name,
 				closable : true,
 				loader :
@@ -70,6 +68,7 @@ Sam.App = function()
 					afterrender : function()
 					{
 						//test getting ajax content
+							console.log('afterrender on  '+tab_name);
 
 						LazyLoad.js(
 						[
@@ -80,13 +79,14 @@ Sam.App = function()
 						]//offical docs say v4.2.2 is out,  but the CDN only has up to 4.2.1
 						, function()
 						{
-							eval("App." + tab_name + ".init();"); 
+							console.log('eval on '+tab_name);
+							eval(  tab_name + ".init();"); 
 						}); 
 					}
 				}
 			}));
 			// now that it has been aded, select it as well
-			App.tabs.select(tab_name);
+			tabs.select(tab_name);
 		},
 		select : function(tab_name)
 		{
@@ -126,38 +126,21 @@ Sam.App = function()
 						//hide loading bar gif
 						//TODO: put this inside some sort of Main.viewport.listeners.onRender event
 						$("#main_loading").addClass('hidden');
+						
+						
+						
+						amplify.subscribe("tab_click",function(o)
+						{ 
+							tabs.set(o.tab_name);
+						});
+						
+						
 					}
 				});
 			}
 		}// end App.init
 		
-		,toolbar :
-		{
-			region : function()
-			{
-				var tab_name = 'region';
-	
-				tabs.set(tab_name);
-			},
-			collection : function()
-			{
-				var tab_name = 'collection';
-	
-				tabs.set(tab_name);
-			},
-			game : function()
-			{
-				var tab_name = 'game';
-	
-				tabs.set(tab_name);
-			},
-			platform : function()
-			{
-				var tab_name = 'platform';
-	
-				tabs.set(tab_name);
-			}
-		}
+ 
 		 
 	};//end of returned object which acts as the constructor
 		

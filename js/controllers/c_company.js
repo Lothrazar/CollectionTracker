@@ -1,4 +1,4 @@
-App.company = 
+company = 
 {
     init:function()
     {

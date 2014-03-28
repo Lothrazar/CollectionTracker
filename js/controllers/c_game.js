@@ -1,4 +1,4 @@
-App.game = 
+game = 
 {
     init:function()
     {

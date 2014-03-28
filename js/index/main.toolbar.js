@@ -2,16 +2,23 @@ Ext.define('Main.toolbar',
 {
     extend:'Ext.toolbar.Toolbar' 
     ,xtype:'main.toolbar'
+    
+    
     ,constructor:function(config)
     {  
-        
+    	//handler goes here instead of above in the scope so it is private
+        var _handler = function()
+	    {
+	    	amplify.publish("tab_click",{tab_name: this.name});
+	    }
         config.items = [];
         config.items.push(
         {
             xtype: 'sbutton',  
             text: 'Collection', 
+            name:"collection",
             height:40,
-            handler : Sam.App.toolbar.collection//TODO: should be independant of the namespace, maybe with amplify events?
+            handler : _handler
         });
         config.items.push(
         {
@@ -24,7 +31,8 @@ Ext.define('Main.toolbar',
                 {
                     xtype: 'sbutton',  
                     text: 'Games', 
-                    handler : Sam.App.toolbar.game
+                    name:'game',
+            		handler : _handler
                 }
             ]
         
@@ -40,19 +48,22 @@ Ext.define('Main.toolbar',
                 {
                     xtype: 'sbutton',  
                     text: 'Regions', 
-                    handler : Sam.App.toolbar.region
+                    name:'region',
+                    handler : _handler
                 }
                 ,{
                     xtype: 'sbutton',  
-                    text: 'platform', 
-                    handler : Sam.App.toolbar.platform
+                    text: 'Platform',  
+                    name: 'platform', 
+                    handler : _handler
                 }
             ] 
         }); 
         
         config.items.push('->');   
                 
-                    
+                   
+        //right side 
 
 
         this.callParent(arguments);//base class

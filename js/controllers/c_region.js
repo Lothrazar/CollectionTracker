@@ -1,4 +1,4 @@
-App.region = 
+region = 
 {
     init:function()
     {

@@ -1,4 +1,4 @@
-App.collection = 
+collection = 
 {
     init:function()
     {
