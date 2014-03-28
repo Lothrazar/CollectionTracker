@@ -115,6 +115,10 @@ Sam.App = function()
 					name : 'LCT',
 					launch : function()
 					{ 
+						//TODO: reorganize folder namespace, and use
+//Ext.Loader.setPath as in https://stackoverflow.com/questions/8879231/relative-paths-using-extjs-4
+
+//also https://www.sencha.com/blog/using-ext-loader-for-your-application/
 						//Ext.QuickTips.init();
 						
 						Ext.create('Main.viewport',{});
