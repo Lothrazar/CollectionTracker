@@ -30,7 +30,12 @@
 				]
 				, function() 
 		        {
-
+	if ( typeof Ext == 'undefined')
+{
+//if this happens, the main_loading bar will still be visible
+alert('Ext.js undefined. Could not find CDN hosted at http://cdn.sencha.com/ext/gpl/4.2.1/ Site will not load correctly');
+}
+//else it is running
 		             //the order does not matter within the loader
 		           /* LazyLoad.js(
 		            ["js/base/sam.button.js"

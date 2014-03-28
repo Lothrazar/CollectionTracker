@@ -1,12 +1,13 @@
 Ext.define('Sam.main.toolbar',
 {
     extend:'Ext.toolbar.Toolbar' 
-    ,xtype:'main.toolbar'
+    //,xtype:'main.toolbar'
     
     
     ,constructor:function(config)
     {  
 		if(typeof config == 'undefined') {config = {}; }
+		config.height = 45;
     	//handler goes here instead of above in the scope so it is private
         var _handler = function()
 	    {
@@ -67,13 +68,13 @@ Ext.define('Sam.main.toolbar',
         //right side 
 
 
+console.log('toolbar constructor');
         this.callParent(arguments);//base class
      }//end of constructor
      
      //override certain functions, then call the parent method
      ,initComponent: function() {  this.callParent(arguments); }
-     ,beforeRender:function() { this.callParent();}
-     ,afterRender:function(){  this.callParent(); }
+ 
   
 });//end of Ext.define
   
