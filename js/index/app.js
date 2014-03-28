@@ -1,11 +1,7 @@
 Ext.namespace("Sam"); //this file only gets loaded once. so define namespace and global object
 
 
-//TODO: put helpers and extensions  and namespace somewher else? maybe in a pre-init?
-String.prototype.capitalizeFirst = function()
-{ 
-	return this.charAt(0).toUpperCase() + this.slice(1);
-} 
+
 
 
 //changing to factory pattern via http://addyosmani.com/resources/essentialjsdesignpatterns/book/#designpatternsjavascript
@@ -13,13 +9,36 @@ Sam.App = function()
 {
 	//DOM does not exist yet
 	
+	//make sure this only gets called once
 	var setDefaults = function()
 	{
+		
 		//Ext.Ajax.extraParams = {TOKEN:"TOKEN"};
+		
+		//TODO: put helpers and extensions  and namespace somewher else? maybe in a pre-init?
+		String.prototype.capitalizeFirst = function()
+		{ 
+			return this.charAt(0).toUpperCase() + this.slice(1);
+		} 
+		
+		//??http://www.sencha.com/forum/showthread.php?281682-My-ExtJS-store-AJAX-or-Rest-calls-are-not-working-despite-working-in-Curl-and-jQuery
+		
+		//Ext.Ajax.useDefaultXhrHeader = false;
+		
+		
+		//Ext.Ajax.cors = true;
+//Ext.Ajax.useDefaultXhrHeader = false;
+
+		Ext.Ajax.defaultHeaders = {              
+ 'Accept' : 'application/json',              
+ 'Content-Type' : 'application/json'
+};
+
 
 		Ext.Ajax.on('requestexception', function(o, e)
 		{
-
+			console.log(o);
+			console.log(e);
 			if (e.status && e.responseText)// these may not exist
 			{
 				alert(e.responseText);
@@ -102,7 +121,8 @@ Sam.App = function()
 	
 	
 	//obj is what we will return
-	var __return = {
+	var __return = 
+	{
 	 
 		init : function()
 		{
@@ -141,6 +161,7 @@ Sam.App = function()
 		}// end App.init
 		
  
+ 		
 		 
 	};//end of returned object which acts as the constructor
 		

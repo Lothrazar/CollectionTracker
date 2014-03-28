@@ -7,7 +7,7 @@ Ext.define('Sam.grid.game',
 		 config.title = 'Games';
         
          config.model= 'Sam.model.game'
-         config.url= 'http://localhost:8080/sam' 
+         config.url=  '/rest/game' 
            
          config.columns= 
          [
