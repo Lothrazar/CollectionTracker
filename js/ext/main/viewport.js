@@ -1,10 +1,11 @@
-Ext.define('Main.viewport',
+Ext.define('Sam.main.viewport',
 {
 	extend:'Ext.container.Viewport' 
   
 	,constructor:function(config)
 	{ 
-		config.layout = 'border';  
+		if(typeof config == 'undefined') {config = {}; }
+		config.layout = 'border';  //or try layout fit here http://mutinyworks.com/blog/2012/05/03/extjs-and-a-simple-mvc-model-view-controller-part-1/
 		
 	    config.items =  
 	    [
@@ -12,7 +13,7 @@ Ext.define('Main.viewport',
 		        region: 'north', 
 		        title:'Collection Tracker',
 		        height:  100,
-		        items:     [Ext.create("Main.toolbar",{})] 
+		        items:     [Ext.create("Sam.main.toolbar")] 
 		    },   
 		    {
 		        region: 'west',

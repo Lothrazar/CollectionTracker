@@ -1,4 +1,4 @@
-Ext.define('Sam.grid.game',
+Ext.define('grids.game',
 {
     extend:'Sam.grid'  
     ,constructor:function(config)

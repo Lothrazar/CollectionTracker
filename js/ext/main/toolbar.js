@@ -1,4 +1,4 @@
-Ext.define('Main.toolbar',
+Ext.define('Sam.main.toolbar',
 {
     extend:'Ext.toolbar.Toolbar' 
     ,xtype:'main.toolbar'
@@ -6,6 +6,7 @@ Ext.define('Main.toolbar',
     
     ,constructor:function(config)
     {  
+		if(typeof config == 'undefined') {config = {}; }
     	//handler goes here instead of above in the scope so it is private
         var _handler = function()
 	    {
