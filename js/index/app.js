@@ -1,6 +1,12 @@
-App =
+Ext.namespace("Sam"); //this file only gets loaded once. so define namespace and global object
+
+
+//changing to factory pattern via http://addyosmani.com/resources/essentialjsdesignpatterns/book/#designpatternsjavascript
+Sam.App = function()
 {
-	setDefaults : function()
+	//DOM does not exist yet
+	
+	var setDefaults = function()
 	{
 		//Ext.Ajax.extraParams = {TOKEN:"TOKEN"};
 
@@ -17,64 +23,11 @@ App =
 			}
 		});
 
-	},
-	init : function()
-	{
-		if ( typeof Ext == 'undefined')
-		{
-			//if this happens, the main_loading bar will still be visible
-			alert('Ext.js undefined.  Could not find CDN hosted at http://cdn.sencha.com/ext/gpl/4.2.1/  Site will not load correctly');
-		}
-		else
-		{
-			App.setDefaults();
-
-			//do we even need the application wrapper?
-			Ext.application(
-			{
-				name : 'LCT',
-				launch : function()
-				{
-
-					Ext.create('Main.viewport',
-					{
-					});
-
-					//hide loading bar gif
-					$("#main_loading").addClass('hidden');
-				}
-			});
-		}
-	}// end App.init
-	,
-	toolbar :
-	{
-		region : function()
-		{
-			var tab_name = 'region';
-
-			App.tabs.set(tab_name);
-		},
-		collection : function()
-		{
-			var tab_name = 'collection';
-
-			App.tabs.set(tab_name);
-		},
-		game : function()
-		{
-			var tab_name = 'game';
-
-			App.tabs.set(tab_name);
-		},
-		platform : function()
-		{
-			var tab_name = 'platform';
-
-			App.tabs.set(tab_name);
-		}
-	},
-	tabs :
+	};
+	
+	//anything outside of the returned object is private
+	 
+	var tabs =
 	{
 		_prefix : 'maintab_',
 		//either make tab if not visible, or set as active tab
@@ -141,6 +94,80 @@ App =
 
 			tabpanel.setActiveTab(tabpanel.child("#" + tab_name));
 		}
-	}
-};
+	};//end of tabs
+
+	
+	
+	 
+	
+	
+	
+	var obj = {
+	 
+		init : function()
+		{
+			if ( typeof Ext == 'undefined')
+			{
+				//if this happens, the main_loading bar will still be visible
+				alert('Ext.js undefined.  Could not find CDN hosted at http://cdn.sencha.com/ext/gpl/4.2.1/  Site will not load correctly');
+			}
+			else
+			{
+				setDefaults();
+ 
+				Ext.application(
+				{
+					name : 'LCT',
+					launch : function()
+					{
+	
+						Ext.create('Main.viewport',{});
+	
+						//hide loading bar gif
+						//TODO: put this inside some sort of Main.viewport.listeners.onRender event
+						$("#main_loading").addClass('hidden');
+					}
+				});
+			}
+		}// end App.init
+		
+		,toolbar :
+		{
+			region : function()
+			{
+				var tab_name = 'region';
+	
+				tabs.set(tab_name);
+			},
+			collection : function()
+			{
+				var tab_name = 'collection';
+	
+				tabs.set(tab_name);
+			},
+			game : function()
+			{
+				var tab_name = 'game';
+	
+				tabs.set(tab_name);
+			},
+			platform : function()
+			{
+				var tab_name = 'platform';
+	
+				tabs.set(tab_name);
+			}
+		}
+		 
+	};//end of returned object which acts as the constructor
+		
+		
+	
+	return obj;
+	
+}();
+
+
+
+
 

@@ -11,7 +11,7 @@ Ext.define('Main.toolbar',
             xtype: 'sbutton',  
             text: 'Collection', 
             height:40,
-            handler : App.toolbar.collection
+            handler : Sam.App.toolbar.collection//TODO: should be independant of the namespace, maybe with amplify events?
         });
         config.items.push(
         {
@@ -24,7 +24,7 @@ Ext.define('Main.toolbar',
                 {
                     xtype: 'sbutton',  
                     text: 'Games', 
-                    handler : App.toolbar.game
+                    handler : Sam.App.toolbar.game
                 }
             ]
         
@@ -40,12 +40,12 @@ Ext.define('Main.toolbar',
                 {
                     xtype: 'sbutton',  
                     text: 'Regions', 
-                    handler : App.toolbar.region
+                    handler : Sam.App.toolbar.region
                 }
                 ,{
                     xtype: 'sbutton',  
                     text: 'platform', 
-                    handler : App.toolbar.platform
+                    handler : Sam.App.toolbar.platform
                 }
             ] 
         }); 
