@@ -73,7 +73,7 @@ Sam.App = function()
 						[
 							//should these be in the views?
 							 "js/controllers/c_" + tab_name + ".js"
-							,"js/components/model." + tab_name + ".js"
+							//,"js/components/model." + tab_name + ".js"
 							,"js/components/grid." + tab_name + ".js"
 						
 						]//offical docs say v4.2.2 is out,  but the CDN only has up to 4.2.1
@@ -115,6 +115,8 @@ Sam.App = function()
 					name : 'LCT',
 					launch : function()
 					{ 
+						//Ext.QuickTips.init();
+						
 						Ext.create('Main.viewport',{});
 	
 						//hide loading bar gif
@@ -125,6 +127,19 @@ Sam.App = function()
 						{ 
 							tabs.set(o.tab_name);
 						}); 
+						
+						
+						amplify.subscribe("show_form",function(o)
+						{ 
+							console.log(o.id);
+							
+							Ext.create(o.id,
+							{
+								renderTo:'ctr_east'
+							});
+							
+						}); 
+						
 					}
 				});
 			}
