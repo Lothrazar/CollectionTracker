@@ -13,6 +13,7 @@
          <img id='main_loading' src='img/loading_bar.gif' /> 
         
          
+         <!--we need jquery first for the on ready event, and then lazyload will pull in all the other JS files we need -->
         <script src="js/libs/jquery-2.1.0.min.js"></script> 
         <script src="js/libs/lazyload.js"></script>  
         <script type="text/javascript"> 
@@ -20,8 +21,10 @@
         	
 			$(document).ready(function()
 			{ 
-				//get ext first, or other dependant scripts have errors
-				LazyLoad.js( [ "http://cdn.sencha.com/ext/gpl/4.2.1/ext-all.js"    ] //offical docs say v4.2.2 is out, but the CDN only has up to 4.2.1
+				//get ext and amplify first, all my objects and events depend on them
+				LazyLoad.js( [ "http://cdn.sencha.com/ext/gpl/4.2.1/ext-all.js"    //offical docs say v4.2.2 is out, but the CDN only has up to 4.2.1
+						     , "js/libs/amplify.min.js"
+				]
 				, function() 
 		        {
 		             //the order does not matter within the loader
@@ -33,9 +36,8 @@
 		            ,"js/index/main.toolbar.js"
 		            ,"js/index/app.js"  
 		            ], function() 
-		            { 
-		            	console.log(Sam.App);
-		               Sam.App.init();
+		            {  
+		                Sam.App.init();//app has defined my object , so fire it up
 		            }); 
 		        });
 			}); 

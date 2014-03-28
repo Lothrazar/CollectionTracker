@@ -101,8 +101,8 @@ Sam.App = function()
 	 
 	
 	
-	
-	var obj = {
+	//obj is what we will return
+	var __return = {
 	 
 		init : function()
 		{
@@ -163,7 +163,7 @@ Sam.App = function()
 		
 		
 	
-	return obj;
+	return __return;
 	
 }();
 
