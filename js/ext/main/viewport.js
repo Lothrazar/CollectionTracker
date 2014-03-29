@@ -2,7 +2,7 @@ Ext.define('Sam.main.viewport',
 {
 	extend:'Ext.container.Viewport' 
 	
-	  ,requires  : ['Sam.base.button']
+	,requires  : ['Sam.base.button']
 	  
 	,constructor:function(config)
 	{ 
@@ -92,8 +92,8 @@ Ext.define('Sam.main.viewport',
 	 
 	 //override certain functions, then call the parent method
 	 ,initComponent: function() {  this.callParent(arguments); }
-     ,beforeRender:function() { this.callParent();}
-	 ,afterRender:function(){  this.callParent(); }
+     //,beforeRender:function() { this.callParent();}
+	 //,afterRender:function(){  this.callParent(); }
   
 });//end of Ext.define
  

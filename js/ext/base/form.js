@@ -1,4 +1,4 @@
-Ext.define('Sam.form',
+Ext.define('Sam.base.form',
 {
     extend:'Ext.Panel' 
     ,xtype:'sform'

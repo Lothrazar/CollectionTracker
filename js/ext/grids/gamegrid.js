@@ -1,13 +1,19 @@
-Ext.define('grids.game',
+Ext.define('Sam.grids.gamegrid',
 {
-    extend:'Sam.grid'  
+    extend:'Sam.base.grid'  
+    ,requires : ['Sam.stores.gamestore']
+    ,initComponent : function() 
+    {
+        this.store   = Sam.stores.gamestore;
+        //this.columns = this.buildColumns();
+        this.callParent();
+    }
     ,constructor:function(config)
-    {   
-     
+    {    
 		 config.title = 'Games';
         
          config.model = 'Sam.model.game'
-         config.url =  '/rest/game' 
+
          var btn_handler = function()
 	     { 
 	    	amplify.publish(this.name);
