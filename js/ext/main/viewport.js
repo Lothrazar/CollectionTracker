@@ -2,7 +2,7 @@ Ext.define('Sam.main.viewport',
 {
 	extend:'Ext.container.Viewport' 
 	
-	,requires  : ['Sam.base.button']
+	,requires  : ['Sam.base.button','Sam.base.grid','Sam.grids.gamegrid']
 	  
 	,constructor:function(config)
 	{ 
@@ -10,7 +10,20 @@ Ext.define('Sam.main.viewport',
 		config.layout = 'border';  //or try layout fit here http://mutinyworks.com/blog/2012/05/03/extjs-and-a-simple-mvc-model-view-controller-part-1/
 		 var tbar_handler = function()
 	    {
-	    	amplify.publish("tab_click",{tab_name: this.name});
+	    	//amplify.publish("toolbar_click",{name: this.name});
+	    	
+	    	switch(this.name)
+	    	{
+	    		case 'game':
+	    		
+	    		console.log('about to create grid');
+	    			  Ext.create('Sam.grid.gamegrid',
+{
+     renderTo: 'grid'
+    });
+	    		
+	    		break;
+	    	}
 	    }
 		
 	    config.items =  

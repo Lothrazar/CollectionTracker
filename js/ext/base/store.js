@@ -2,11 +2,13 @@ Ext.define('Sam.base.Store',
 {
    extend: 'Ext.data.Store'
    ,xtype:'sstore'
-   ,singleton : true
+  // ,singleton : true
    ,initComponent: function() {  this.callParent(arguments); }
   
    ,constructor:function(config)
    {  
+   		console.log('base class store');
+   		console.log(config);
         config.proxy = 
         {
              type: 'ajax',

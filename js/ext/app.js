@@ -37,7 +37,7 @@
 			Ext.Msg.alert('Error',"500 : Could not connect to database 'tracker'");
 		}
 	}); 
-  //  Ext.require('MyApp.views.UserEditorWindow');
+
  
     Ext.onReady(function() 
     {

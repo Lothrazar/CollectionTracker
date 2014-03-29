@@ -1,7 +1,7 @@
 Ext.define('Sam.base.grid',
 {
     extend:'Ext.grid.Panel' 
-    ,xtype:'sgrid'
+   // ,xtype:'sgrid'
     ,constructor:function(config)
     {   
         //base class for all my grids

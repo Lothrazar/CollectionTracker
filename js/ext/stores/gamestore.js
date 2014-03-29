@@ -6,7 +6,10 @@ Ext.define('Sam.stores.gamestore',
    ,model     :  'Sam.models.gamemodel'
    ,constructor:function(config)
    {  
+        console.log('game store constructor');
         
+		if(typeof config == 'undefined') {config = {}; }
+		
         config.url="/rest/game";
         this.callParent(arguments);
    }

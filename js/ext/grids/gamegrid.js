@@ -1,15 +1,17 @@
 Ext.define('Sam.grids.gamegrid',
 {
     extend:'Sam.base.grid'  
-    ,requires : ['Sam.stores.gamestore']
+    ,requires : ['Sam.stores.gamestore']//put it here?,'Sam.base.grid'
     ,initComponent : function() 
     {
-        this.store   = Sam.stores.gamestore;
+      
         //this.columns = this.buildColumns();
         this.callParent();
     }
     ,constructor:function(config)
     {    
+    	  this.store   = Ext.create('Sam.stores.gamestore',{});//it was just js  Sam.stores.gamestore
+        console.log(this.store);
 		 config.title = 'Games';
         
          config.model = 'Sam.model.game'
