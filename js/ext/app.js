@@ -1,5 +1,12 @@
 (function() 
 {
+	//TODO: put helpers and extensions and namespace somewher else? maybe in a pre-init?
+ 	//contents of old setDefaults
+	String.prototype.capitalizeFirst = function()
+	{
+		return this.charAt(0).toUpperCase() + this.slice(1);
+	} 
+	
 	Ext.QuickTips.init();
 	
     Ext.Loader.setConfig(
@@ -10,31 +17,26 @@
             Sam : 'js/ext'
         } 
     });
- 	//TODO: put helpers and extensions and namespace somewher else? maybe in a pre-init?
- 	//contents of old setDefaults
-String.prototype.capitalizeFirst = function()
-{
-return this.charAt(0).toUpperCase() + this.slice(1);
-} 
-
-Ext.Ajax.defaultHeaders =
-{
-'Accept' : 'application/json',
-'Content-Type' : 'application/json'
-};
+ 	
+	
+	Ext.Ajax.defaultHeaders =
+	{
+		'Accept' : 'application/json',
+		'Content-Type' : 'application/json'
+	};
 	Ext.Ajax.on('requestexception', function(o, e)
-{
-console.log(o);
-console.log(e);
-if (e.status && e.responseText)// these may not exist
-{
-alert(e.responseText);
-}
-else//assume that database connection failed
-{
-alert("500 : Could not connect to database 'tracker'");
-}
-}); 
+	{
+		console.log(o);
+		console.log(e);
+		if (e.status && e.responseText)// these may not exist
+		{
+			Ext.Msg.alert('Error',e.responseText);
+		}
+		else//assume that database connection failed
+		{
+			Ext.Msg.alert('Error',"500 : Could not connect to database 'tracker'");
+		}
+	}); 
   //  Ext.require('MyApp.views.UserEditorWindow');
  
     Ext.onReady(function() 
