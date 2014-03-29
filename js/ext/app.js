@@ -1,5 +1,7 @@
 (function() 
 {
+	Ext.QuickTips.init();
+	
     Ext.Loader.setConfig(
     {
         enabled : true,
@@ -44,9 +46,7 @@ alert("500 : Could not connect to database 'tracker'");
 		   name: 'Sam',
 		   appFolder:'js/ext',
 		   launch: function() 
-		   {
-		 
-		 	console.log('launched');
+		   { 
        		 Ext.create('Sam.main.viewport',
        		 {
        		 	renderTo:Ext.getBody() //the entire window

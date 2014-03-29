@@ -1,12 +1,14 @@
 Ext.define('Sam.main.viewport',
 {
 	extend:'Ext.container.Viewport' 
-  
+	
+	  ,requires  : ['Sam.base.button']
+	  
 	,constructor:function(config)
 	{ 
 		if(typeof config == 'undefined') {config = {}; }
 		config.layout = 'border';  //or try layout fit here http://mutinyworks.com/blog/2012/05/03/extjs-and-a-simple-mvc-model-view-controller-part-1/
-		 var _handler = function()
+		 var tbar_handler = function()
 	    {
 	    	amplify.publish("tab_click",{tab_name: this.name});
 	    }
@@ -16,14 +18,16 @@ Ext.define('Sam.main.viewport',
 		    {
 		        region: 'north', 
 		        title:'Collection Tracker',
-		        height:  100,
-		        tbar:[ {
-                    xtype: 'sbutton',  
+		        height:  53,
+		        tbar:[ 
+		        {
+                    xtype: 'sbutton',   
                     text: 'Games', 
                     name:'game',
-            		handler : _handler
+            		handler : tbar_handler
                 }]
-		        //items:     [Ext.create("Sam.main.toolbar")] 
+		      //  items:   
+		    // tbar:     Ext.create("Sam.main.toolbar") 
 		    },   
 		    {
 		        region: 'west',
