@@ -1,9 +1,10 @@
-Ext.define('Sam.button',
+Ext.define('Sam.base.button',
 {
     extend:'Ext.button.Button' 
     ,xtype:'sbutton'
     ,constructor:function(config)
     {  
+    	console.log('button creating');
         config.border = 1;
         config.cls = 'x-btn-default-small';
         
@@ -23,8 +24,9 @@ Ext.define('Sam.button',
      
      //override certain functions, then call the parent method
      ,initComponent: function() {  this.callParent(arguments); }
-     ,beforeRender:function() { this.callParent();}
-     ,afterRender:function(){  this.callParent(); }
+     //,beforeRender:function() { this.callParent();}
+     //,afterRender:function(){  this.callParent(); }
   
 });//end of Ext.define
   
+ 

@@ -1,9 +1,9 @@
-Ext.define('Sam.window',
+Ext.define('Sam.base.window',
 {
     extend:'Ext.window.Window' 
     ,xtype:'swindow'
     ,layout: 'fit' 
-    //,bodyPadding: 5
+    ,bodyPadding: 5
     ,constructor:function(config)
     {  
       
